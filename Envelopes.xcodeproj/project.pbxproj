@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38067B192A9FBE2C00690C48 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38067B182A9FBE2C00690C48 /* ContentViewModel.swift */; };
+		38067B1B2A9FC00000690C48 /* Envelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38067B1A2A9FC00000690C48 /* Envelope.swift */; };
+		38067B1F2A9FD1C400690C48 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38067B1E2A9FD1C400690C48 /* ProgressBar.swift */; };
 		3853F9412A9FB68200D26643 /* EnvelopesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3853F9402A9FB68200D26643 /* EnvelopesApp.swift */; };
 		3853F9432A9FB68200D26643 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3853F9422A9FB68200D26643 /* ContentView.swift */; };
 		3853F9452A9FB68300D26643 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3853F9442A9FB68300D26643 /* Assets.xcassets */; };
@@ -34,6 +37,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		38067B182A9FBE2C00690C48 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		38067B1A2A9FC00000690C48 /* Envelope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Envelope.swift; sourceTree = "<group>"; };
+		38067B1E2A9FD1C400690C48 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		3853F93D2A9FB68200D26643 /* Envelopes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Envelopes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3853F9402A9FB68200D26643 /* EnvelopesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvelopesApp.swift; sourceTree = "<group>"; };
 		3853F9422A9FB68200D26643 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -100,6 +106,9 @@
 				3853F9442A9FB68300D26643 /* Assets.xcassets */,
 				3853F9462A9FB68300D26643 /* Envelopes.entitlements */,
 				3853F9472A9FB68300D26643 /* Preview Content */,
+				38067B182A9FBE2C00690C48 /* ContentViewModel.swift */,
+				38067B1A2A9FC00000690C48 /* Envelope.swift */,
+				38067B1E2A9FD1C400690C48 /* ProgressBar.swift */,
 			);
 			path = Envelopes;
 			sourceTree = "<group>";
@@ -261,6 +270,9 @@
 			files = (
 				3853F9432A9FB68200D26643 /* ContentView.swift in Sources */,
 				3853F9412A9FB68200D26643 /* EnvelopesApp.swift in Sources */,
+				38067B192A9FBE2C00690C48 /* ContentViewModel.swift in Sources */,
+				38067B1F2A9FD1C400690C48 /* ProgressBar.swift in Sources */,
+				38067B1B2A9FC00000690C48 /* Envelope.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
