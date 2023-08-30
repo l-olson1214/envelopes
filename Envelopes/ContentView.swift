@@ -12,11 +12,14 @@ struct ContentView: View {
     @State var progressValue: Float = 25.0
     
     var body: some View {
-        VStack {
-            title
-            envelopeList
+        NavigationView {
+            VStack {
+                title
+                envelopeList
+            }
+            .frame(maxWidth: .infinity)
+            .background(Color(UIColor.systemGreen).opacity(0.5))
         }
-        .frame(maxWidth: .infinity)
     }
     
     var title: some View {
@@ -24,15 +27,18 @@ struct ContentView: View {
             Text("envelopes")
                 .font(.largeTitle)
             Text(viewModel.greeting)
+        }
+    }
+    
+    
+    var envelopeList: some View {
+        List {
             Text(viewModel.totalSavings)
                 .font(.title2)
                 .fontWeight(.bold)
                 .padding()
-        }
-    }
-    
-    var envelopeList: some View {
-        List {
+                .frame(maxWidth: .infinity)
+            
             ForEach(viewModel.envelopes) { envelope in
                 HStack {
                     Text(envelope.title)
@@ -42,6 +48,14 @@ struct ContentView: View {
                     ProgressBar(value: envelope.percentageComplete).frame(height: 15)
                 }
             }
+            
+            Button("New Envelopea") {
+                print("Add")
+            }
+            .frame(maxWidth: .infinity)
+            .padding()
+            .background(Color(red: 0.5, green: 1.9, blue: 0.9))
+            .clipShape(Capsule())
         }
     }
 }
