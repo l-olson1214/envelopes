@@ -14,7 +14,5 @@ struct Envelope: Identifiable, Hashable {
     var percentageComplete: Float {
         return Float(amount / goal)
     }
-    var id: String {
-        return title
-    }
+    var id = UUID()
 }

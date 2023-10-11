@@ -8,6 +8,9 @@
 import Foundation
 
 class ContentViewModel: ObservableObject {
+    @Published var totalSavings: String
+    @Published var envelopes: [Envelope]
+    
     var timeOfDay: String {
         let date = NSDate()
         let calendar = NSCalendar.current
@@ -30,16 +33,24 @@ class ContentViewModel: ObservableObject {
         return "Good \(timeOfDay)!"
     }
     
-    var envelopes = [
-        Envelope(title: "New Car", amount: 527.2, goal: 1500),
-        Envelope(title: "Vacation", amount: 727.16, goal: 1250)
-    ]
+    init() {
+        self.envelopes = [
+            Envelope(title: "New Car", amount: 527.2, goal: 1500),
+            Envelope(title: "Vacation", amount: 727.16, goal: 1250)
+        ]
+        
+        self.totalSavings = "$0"
+        updateTotalSavings()
+    }
     
-    var totalSavings: String {
+    func updateTotalSavings() {
         var amnt = 0.0
         for envelope in envelopes {
             amnt += envelope.amount
         }
-        return "$\(String(format: "%.2f", amnt))"
+        
+        totalSavings = "$\(String(format: "%.2f", amnt))"
     }
+    
+    
 }

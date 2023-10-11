@@ -10,6 +10,11 @@ import SwiftUI
 struct ContentView: View {
     @ObservedObject var viewModel = ContentViewModel()
     @State var progressValue: Float = 25.0
+    @State private var isShowingSheet = false
+    
+    @State private var envelopeName: String = ""
+    @State private var currentAmount: String = ""
+    @State private var goalAmount: String = ""
     
     var body: some View {
         NavigationView {
@@ -30,7 +35,6 @@ struct ContentView: View {
         }
     }
     
-    
     var envelopeList: some View {
         List {
             Text(viewModel.totalSavings)
@@ -48,15 +52,71 @@ struct ContentView: View {
                     ProgressBar(value: envelope.percentageComplete).frame(height: 15)
                 }
             }
+            .onDelete { indexSet in
+                viewModel.envelopes.remove(atOffsets: indexSet)
+                viewModel.updateTotalSavings()
+          }
             
-            Button("New Envelopea") {
-                print("Add")
+            Button("New Envelope") {
+                isShowingSheet.toggle()
+                viewModel.envelopes.append(Envelope(title: "new item", amount: 50.26, goal: 10000))
+                viewModel.updateTotalSavings()
             }
             .frame(maxWidth: .infinity)
             .padding()
             .background(Color(red: 0.5, green: 1.9, blue: 0.9))
             .clipShape(Capsule())
         }
+        .sheet(isPresented: $isShowingSheet) {
+            sheet
+        }
+    }
+    
+    private var sheet: some View {
+        VStack {
+            Text("Add a new envelope")
+                .font(.title2)
+            
+            TextField(
+                "Envelope Name",
+                text: $envelopeName
+            )
+            
+            TextField (
+                "Current Amount (0.00)",
+                text: $currentAmount
+            )
+            
+            TextField (
+                "Goal Amount (0.00",
+                text: $goalAmount
+            )
+            
+            HStack {
+                Button("Cancel", action:
+                {
+                    isShowingSheet.toggle()
+                })
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(Color(red: 0.5, green: 1.9, blue: 0.9))
+                .clipShape(Capsule())
+                .foregroundColor(.black)
+                
+                Button("Save", action:
+                {
+                    isShowingSheet.toggle()
+                })
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(Color(red: 0.5, green: 1.9, blue: 0.9))
+                .clipShape(Capsule())
+                .foregroundColor(.black)
+            }
+            
+        }
+        .padding()
+        .textFieldStyle(RoundedBorderTextFieldStyle())
     }
 }
 
