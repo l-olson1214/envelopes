@@ -59,8 +59,6 @@ struct ContentView: View {
             
             Button("New Envelope") {
                 isShowingSheet.toggle()
-                viewModel.envelopes.append(Envelope(title: "new item", amount: 50.26, goal: 10000))
-                viewModel.updateTotalSavings()
             }
             .frame(maxWidth: .infinity)
             .padding()
@@ -96,6 +94,7 @@ struct ContentView: View {
                 Button("Cancel", action:
                 {
                     isShowingSheet.toggle()
+                    clearEnvelope()
                 })
                 .frame(maxWidth: .infinity)
                 .padding()
@@ -105,7 +104,9 @@ struct ContentView: View {
                 
                 Button("Save", action:
                 {
+                    viewModel.createNewEnvelope(name: envelopeName, current: currentAmount, goal: goalAmount)
                     isShowingSheet.toggle()
+                    clearEnvelope()
                 })
                 .frame(maxWidth: .infinity)
                 .padding()
@@ -117,6 +118,12 @@ struct ContentView: View {
         }
         .padding()
         .textFieldStyle(RoundedBorderTextFieldStyle())
+    }
+    
+    func clearEnvelope() {
+        envelopeName = ""
+        currentAmount = ""
+        goalAmount = ""
     }
 }
 

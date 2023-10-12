@@ -52,5 +52,20 @@ class ContentViewModel: ObservableObject {
         totalSavings = "$\(String(format: "%.2f", amnt))"
     }
     
+    func createNewEnvelope(name: String?, current: String?, goal: String?) {
+        guard let name = name,
+              let current = current,
+              let goal = goal else {
+            print("error")
+            return
+        }
+        guard let doubleCurrent = Double(current) else { return }
+        guard let doubleGoal = Double(goal) else { return }
+        
+        let newEnvelope = Envelope(title: name, amount: doubleCurrent, goal: doubleGoal)
+        envelopes.append(newEnvelope)
+        
+        updateTotalSavings()
+    }
     
 }
