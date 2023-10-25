@@ -97,11 +97,7 @@ struct ContentView: View {
                     isShowingSheet.toggle()
                     clearEnvelope()
                 })
-                .frame(maxWidth: .infinity)
-                .padding()
-                .background(Color(red: 0.5, green: 1.9, blue: 0.9))
-                .clipShape(Capsule())
-                .foregroundColor(.black)
+                .bottomButton()
                 
                 Button("Save", action:
                 {
@@ -109,11 +105,7 @@ struct ContentView: View {
                     isShowingSheet.toggle()
                     clearEnvelope()
                 })
-                .frame(maxWidth: .infinity)
-                .padding()
-                .background(Color(red: 0.5, green: 1.9, blue: 0.9))
-                .clipShape(Capsule())
-                .foregroundColor(.black)
+                .bottomButton()
             }
             
         }
@@ -125,6 +117,23 @@ struct ContentView: View {
         envelopeName = ""
         currentAmount = ""
         goalAmount = ""
+    }
+}
+
+extension View {
+    func bottomButton() -> some View {
+        modifier(BottomButtons())
+    }
+}
+
+struct BottomButtons: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .frame(maxWidth: .infinity)
+            .padding()
+            .background(Color(red: 0.5, green: 1.9, blue: 0.9))
+            .clipShape(Capsule())
+            .foregroundColor(.black)
     }
 }
 
