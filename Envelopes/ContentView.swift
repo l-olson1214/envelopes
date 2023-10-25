@@ -53,8 +53,9 @@ struct ContentView: View {
                 }
             }
             .onDelete { indexSet in
-                viewModel.envelopes.remove(atOffsets: indexSet)
-                viewModel.updateTotalSavings()
+                for index in indexSet {
+                    viewModel.removeEnvelope(at: index)
+                }
           }
             
             Button("New Envelope") {

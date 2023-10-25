@@ -44,12 +44,15 @@ class ContentViewModel: ObservableObject {
     }
     
     func updateTotalSavings() {
-        var amnt = 0.0
-        for envelope in envelopes {
-            amnt += envelope.amount
+        totalSavings = "$\(String(format: "%.2f", Envelope.totalSavings))"
+    }
+    
+    func removeEnvelope(at index: Int) {
+        if index >= 0 && index < envelopes.count {
+            var deletedEnvelope = envelopes.remove(at: index)
+            deletedEnvelope.delete()
+            updateTotalSavings()
         }
-        
-        totalSavings = "$\(String(format: "%.2f", amnt))"
     }
     
     func createNewEnvelope(name: String?, current: String?, goal: String?) {
